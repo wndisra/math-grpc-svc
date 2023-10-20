@@ -1,4 +1,4 @@
-package handling
+package maths
 
 import (
 	"context"

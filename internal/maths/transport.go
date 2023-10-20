@@ -1,10 +1,9 @@
-package handling
+package maths
 
 import (
 	"context"
 
 	gt "github.com/go-kit/kit/transport/grpc"
-	"github.com/go-kit/log"
 	"github.com/wndisra/math-svc/pb"
 )
 
@@ -16,7 +15,7 @@ type gRPCServer struct {
 }
 
 // NewGRPCServer initializes a new gRPC server
-func NewGRPCServer(endpoints Endpoints, logger log.Logger) pb.MathServiceServer {
+func NewGRPCServer(endpoints Endpoints) pb.MathServiceServer {
 	return &gRPCServer{
 		add: gt.NewServer(
 			endpoints.Add,

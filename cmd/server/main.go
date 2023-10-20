@@ -11,7 +11,7 @@ import (
 	"github.com/go-kit/log/level"
 	"google.golang.org/grpc"
 
-	"github.com/wndisra/math-svc/internal/handling"
+	"github.com/wndisra/math-svc/internal/maths"
 	"github.com/wndisra/math-svc/pb"
 )
 
@@ -21,9 +21,9 @@ func main() {
 	logger = log.With(logger, "ts", log.DefaultTimestampUTC)
 	logger = log.With(logger, "caller", log.DefaultCaller)
 
-	addservice := handling.NewService(logger)
-	addendpoint := handling.MakeEndpoints(addservice)
-	grpcServer := handling.NewGRPCServer(addendpoint, logger)
+	mathservice := maths.NewService(logger)
+	mathendpoint := maths.MakeEndpoints(mathservice)
+	grpcServer := maths.NewGRPCServer(mathendpoint)
 
 	errs := make(chan error)
 	go func() {
